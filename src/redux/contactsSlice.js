@@ -8,7 +8,15 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
     state.isLoading = false
     state.error = action.payload
-};
+}
+
+const isPendingAction = (action) => {
+    return action.type.endsWith('/pending')
+}
+
+const isRejectAction = (action) => {
+    return action.type.endsWith('/rejected')
+}
 
 const contactsSlice = createSlice({
     name: 'contacts',
@@ -21,12 +29,6 @@ const contactsSlice = createSlice({
     extraReducers: (builder) => {
         builder
 
-            .addCase(fetchContacts.pending, handlePending)
-            .addCase(addContact.pending, handlePending)
-            .addCase(deleteContact.pending, handlePending)
-            .addCase(fetchContacts.rejected, handleRejected)
-            .addCase(addContact.rejected, handleRejected)
-            .addCase(deleteContact.rejected, handleRejected)
             .addCase(fetchContacts.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.contacts = action.payload
@@ -43,6 +45,8 @@ const contactsSlice = createSlice({
                 )
                 state.contacts.splice(index, 1)
             })
+            .addMatcher(isPendingAction, handlePending)
+            .addMatcher(isRejectAction, handleRejected)
     },
 });
 
