@@ -18,34 +18,9 @@ const contactsSlice = createSlice({
         error: null,
     },
 
-    // extraReducers: {
-    //     [fetchContacts.pending]: handlePending,
-    //     [fetchContacts.fulfilled](state, action) {
-    //         state.isLoading = false
-    //         state.contacts = action.payload
-    //     },
-    //     [fetchContacts.rejected]: handleRejected,
-    //     [addContact.pending]: handlePending,
-    //     [addContact.fulfilled](state, action) {
-    //         state.isLoading = false
-    //         state.contacts.push(action.payload)
-    //     },
-    //     [addContact.rejected]: handleRejected,
-    //     [deleteContact.pending]: handlePending,
-    //     [deleteContact.fulfilled](state, action) {
-    //         state.isLoading = false
-    //         state.error = null
-    //         const index = state.contacts.findIndex(
-    //             (contact) => contact.id === action.payload
-    //         )
-    //         state.contacts.splice(index, 1)
-    //     },
-    //     [deleteContact.rejected]: handleRejected,
-    // },
-
     extraReducers: (builder) => {
         builder
-            
+
             .addCase(fetchContacts.pending, handlePending)
             .addCase(addContact.pending, handlePending)
             .addCase(deleteContact.pending, handlePending)
@@ -56,23 +31,18 @@ const contactsSlice = createSlice({
                 state.isLoading = false
                 state.contacts = action.payload
             })
-            // [fetchContacts.rejected]: handleRejected,
-            // [addContact.pending]: handlePending,
             .addCase(addContact.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.contacts.push(action.payload)
             })
-            // [addContact.rejected]: handleRejected,
-            // [deleteContact.pending]: handlePending,
             .addCase(deleteContact.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.error = null
                 const index = state.contacts.findIndex(
                     (contact) => contact.id === action.payload
-                );
+                )
                 state.contacts.splice(index, 1)
-            });
-        // [deleteContact.rejected]: handleRejected,
+            })
     },
 });
 
