@@ -4,12 +4,10 @@ import { selectVisibleContacts } from '../../redux/selectors';
 import { deleteContact } from '../../redux/operations';
 
 
-
-
 export const ContactList = () => {
   const dispatch = useDispatch()
 
-  const filteredContacts = useSelector(selectVisibleContacts);
+  const filteredContacts = useSelector(selectVisibleContacts)
 
   const delContact = (id) => {
     dispatch(deleteContact(id))
