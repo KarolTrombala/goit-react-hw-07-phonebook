@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid black;
+  max-width: 300px;
+  padding: 10px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.button {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.button:focus {
+  background-color: lightblue;
+}
+
+.input {
+  margin-top: 10px;
+  border: px solid lightgray;
+}
