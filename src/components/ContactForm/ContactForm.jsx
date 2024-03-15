@@ -5,10 +5,10 @@ import { addContact } from 'redux/operations';
 export const ContactForm = () => {
     const dispatch = useDispatch();
 
-    const handleSubmit = event => {
-        event.preventDefault();
+    const handleSubmit = e => {
+        e.preventDefault();
 
-        const form = event.target;
+        const form = e.target;
         const name = form.elements.name.value;
         const number = form.elements.number.value;
 
